@@ -32,7 +32,7 @@ $dataSet.Tables
 
 $Ticket = $dataset.Tables[0]
 
-#$Printers = New-Object bpac.PrinterClass
+$Printers = New-Object bpac.PrinterClass
 #$Printers.GetInstalledPrinters()
 #$Printers.IsPrinterSupported('Brother QL-580N')
 #Exit
@@ -50,7 +50,7 @@ If ($Label.Open($Filename)) {
         # Print Preview:
         #    $Label.Export(4, ($PSScriptRoot+'\test.bmp'), 180)
 
-        $Label.SetPrinter('Brother QL-580N', 0)
+        $Label.SetPrinter($Printers.GetInstalledPrinters()[0], 0)
         $Label.StartPrint('',0)
         $Label.PrintOut(1, 0)
         $Label.Close()
